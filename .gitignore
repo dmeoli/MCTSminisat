@@ -1,5 +1,7 @@
-config.mk
 build
-bin
-satProb
-MiniSat.pdf
+minisat/gym/_GymSolver.so
+minisat/gym/GymSolver_wrap.o
+
+__pycache__
+minisat/__pycache__
+minisat/gym/__pycache__
