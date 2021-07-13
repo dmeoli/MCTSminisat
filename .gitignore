@@ -1,6 +1,4 @@
 build
-minisat/gym/_GymSolver.so
-minisat/gym/GymSolver_wrap.o
 
 __pycache__
 minisat/__pycache__
