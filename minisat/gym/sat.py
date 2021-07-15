@@ -1,8 +1,10 @@
-from GymSolver import GymSolver
-import numpy as np
 import random
 from os import listdir
 from os.path import isfile, join
+
+import numpy as np
+
+from .GymSolver import GymSolver
 
 
 class Sat:
