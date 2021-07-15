@@ -59,7 +59,7 @@ SOMAJOR=2
 SOMINOR=1
 SORELEASE?=.0#   Declare empty to leave out from library file name.
 
-PYTHON=python3.9
+PYTHON?=python3.9
 
 MINISAT_CXXFLAGS = -I. -D __STDC_LIMIT_MACROS -D __STDC_FORMAT_MACROS -Wall -Wno-parentheses -Wextra -std=c++11 -I/usr/include/${PYTHON} -I./GSL/include
 MINISAT_LDFLAGS  = -Wall -lz -L./GSL/lib -lgsl -lgslcblas -lm
