@@ -52,10 +52,10 @@ class Sat:
         This function reset the minisat by the rule of mode
         """
         if self.mode == "random":
-            pickfile = self.sat_files[random.randint(0, self.sat_file_num - 1)]
+            pick_file = self.sat_files[random.randint(0, self.sat_file_num - 1)]
             self.repeat_counter += 1
         elif self.mode == "iterate":
-            pickfile = self.sat_files[self.iterate_counter]
+            pick_file = self.sat_files[self.iterate_counter]
             self.iterate_counter += 1
             if self.iterate_counter >= self.sat_file_num:
                 self.iterate_counter = 0
@@ -63,7 +63,7 @@ class Sat:
                 print("WARNING: iteration of all files in dir {} "
                       "is done, will restart iteration".format(self.sat_dir))
         elif self.mode.startswith("repeat^"):
-            pickfile = self.sat_files[self.iterate_counter]
+            pick_file = self.sat_files[self.iterate_counter]
             self.repeat_counter += 1
             if self.repeat_counter >= self.repeat_limit:
                 self.repeat_counter = 0
@@ -73,10 +73,10 @@ class Sat:
                     print("WARNING: repeated iteration of all files in dir {} "
                           "is done, will restart iteration".format(self.sat_dir))
         else:
-            pickfile = self.sat_files[self.file_index]
+            pick_file = self.sat_files[self.file_index]
             self.repeat_counter += 1
         state = np.zeros((self.max_clause, self.max_var, 2), dtype=np.float32)
-        self.S = GymSolver(pickfile)
+        self.S = GymSolver(pick_file)
         self.S.init(np.reshape(state, (self.max_clause * self.max_var * 2,)))
         return state
 
