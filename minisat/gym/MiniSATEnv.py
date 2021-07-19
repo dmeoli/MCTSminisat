@@ -2,12 +2,13 @@ import random
 from os import listdir
 from os.path import isfile, join
 
+import gym
 import numpy as np
 
 from .GymSolver import GymSolver
 
 
-class Sat:
+class gym_sat_Env(gym.Env):
     """
     This class is a simple wrapper of minisat instance, used in MCTS training as perfect information
     """
@@ -85,9 +86,9 @@ class Sat:
         This function reset the minisat by the file_no
         """
         assert (file_no >= 0) and (file_no < self.sat_file_num), "file_no has to be a valid file list index"
-        pickfile = self.sat_files[file_no]
+        pick_file = self.sat_files[file_no]
         state = np.zeros((self.max_clause, self.max_var, 2), dtype=np.float32)
-        self.S = GymSolver(pickfile)
+        self.S = GymSolver(pick_file)
         if self.S.init(np.reshape(state, (self.max_clause * self.max_var * 2,))):
             return state
         else:
