@@ -81,7 +81,7 @@ class gym_sat_Env(gym.Env):
         self.S.init(np.reshape(state, (self.max_clause * self.max_var * 2,)))
         return state
 
-    def resetAt(self, file_no):
+    def reset_at(self, file_no):
         """
         This function reset the minisat by the file_no
         """
