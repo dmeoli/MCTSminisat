@@ -102,7 +102,7 @@ class gym_sat_Env(gym.Env):
         self.S.set_decision(decision)
         state = np.zeros((self.max_clause, self.max_var, 2), dtype=np.float32)
         self.S.step(np.reshape(state, (self.max_clause * self.max_var * 2,)))
-        return self.S.getDone(), state
+        return self.S.get_done(), state
 
     def simulate(self, pi, v):
         """

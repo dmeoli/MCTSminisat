@@ -75,15 +75,15 @@ void GymSolver::step_forward(int decision) {
     S.step();
 }
 
-double GymSolver::getReward() {
+double GymSolver::get_reward() {
 	return S.env_reward;
 }
 
-bool GymSolver::getDone() {
+bool GymSolver::get_done() {
 	return !S.env_hold;
 }
 
-char* GymSolver::getState() {
+char* GymSolver::get_state() {
 	//return S.snapTo;
     return S.env_state;
 }

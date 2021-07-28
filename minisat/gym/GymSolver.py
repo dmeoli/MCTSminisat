@@ -191,14 +191,14 @@ class GymSolver(_object):
     def step_forward(self, decision):
         return _GymSolver.GymSolver_step_forward(self, decision)
 
-    def getReward(self):
-        return _GymSolver.GymSolver_getReward(self)
+    def get_reward(self):
+        return _GymSolver.GymSolver_get_reward(self)
 
-    def getDone(self):
-        return _GymSolver.GymSolver_getDone(self)
+    def get_done(self):
+        return _GymSolver.GymSolver_get_done(self)
 
-    def getState(self):
-        return _GymSolver.GymSolver_getState(self)
+    def get_state(self):
+        return _GymSolver.GymSolver_get_state(self)
     __swig_destroy__ = _GymSolver.delete_GymSolver
     __del__ = lambda self: None
 GymSolver_swigregister = _GymSolver.GymSolver_swigregister
