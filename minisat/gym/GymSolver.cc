@@ -13,22 +13,22 @@ using namespace Minisat;
 //=================================================================================================
 // Constructor/Destructor:
 
-GymSolver::GymSolver(char* satProb) {
+GymSolver::GymSolver(char* sat_prob) {
     
 	IntOption    verb   ("MAIN", "verb",   "Verbosity level (0=silent, 1=some, 2=more).", 0, IntRange(0, 2));
 	S.verbosity = verb;
-	gzFile in = gzopen(satProb, "rb");
+	gzFile in = gzopen(sat_prob, "rb");
     if (in == NULL) {
-    	printf("ERROR! Could not open file: %s\n", satProb); 
+    	printf("ERROR! Could not open file: %s\n", sat_prob);
     	exit(1);
     }
     parse_DIMACS(in, S, true);
     gzclose(in);
-    asprintf(&(S.snapTo), "%s%s", satProb, "snaps");
+    asprintf(&(S.snapTo), "%s%s", sat_prob, "snaps");
 
     S.eliminate(true);
     if (!S.okay()){
-    	printf("ERROR! SAT problem from file: %s is UNSAT by simplification\n", satProb);
+    	printf("ERROR! SAT problem from file: %s is UNSAT by simplification\n", sat_prob);
     	exit(1);    
     }    
 }
