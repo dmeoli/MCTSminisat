@@ -5463,7 +5463,7 @@ SWIGINTERN PyObject *_wrap_GymSolver_get_reward(PyObject *SWIGUNUSEDPARM(self), 
   if (!PyArg_ParseTuple(args,(char *)"O:GymSolver_get_reward",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Minisat__GymSolver, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GymSolver_get_reward" "', argument " "1"" of type '" "Minisat::GymSolver *""'");
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GymSolver_get_reward" "', argument " "1"" of type '" "Minisat::GymSolver *""'"); 
   }
   arg1 = reinterpret_cast< Minisat::GymSolver * >(argp1);
   {
@@ -5498,7 +5498,7 @@ SWIGINTERN PyObject *_wrap_GymSolver_get_done(PyObject *SWIGUNUSEDPARM(self), Py
   if (!PyArg_ParseTuple(args,(char *)"O:GymSolver_get_done",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Minisat__GymSolver, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GymSolver_get_done" "', argument " "1"" of type '" "Minisat::GymSolver *""'");
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GymSolver_get_done" "', argument " "1"" of type '" "Minisat::GymSolver *""'"); 
   }
   arg1 = reinterpret_cast< Minisat::GymSolver * >(argp1);
   {
@@ -5533,7 +5533,7 @@ SWIGINTERN PyObject *_wrap_GymSolver_get_state(PyObject *SWIGUNUSEDPARM(self), P
   if (!PyArg_ParseTuple(args,(char *)"O:GymSolver_get_state",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Minisat__GymSolver, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GymSolver_get_state" "', argument " "1"" of type '" "Minisat::GymSolver *""'");
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GymSolver_get_state" "', argument " "1"" of type '" "Minisat::GymSolver *""'"); 
   }
   arg1 = reinterpret_cast< Minisat::GymSolver * >(argp1);
   {
