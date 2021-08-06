@@ -13,21 +13,25 @@ class gym_sat_Env(gym.Env):
     This class is a simple wrapper of minisat instance, used in MCTS training as perfect information
     """
 
-    def __init__(self, sat_dir, max_clause=100, max_var=20, mode='random'):
+    def __init__(
+            self,
+            sat_dir,
+            max_clause=100,
+            max_var=20,
+            mode='random'
+    ):
         """
-        sat_dir: directory to the sat problems
-        max_clause: number of rows for the final state
-        max_var: number of columns for the final state
-        mode: 'random' => at reset, randomly pick a file from directory
-              'iterate' => at reset, iterate each file one by one
-              'repeat^n' => at reset, give the same problem n times before iterates to the next one
-              'filename' => at reset, repeatedly use the given filename
+        :param sat_dir: directory to the sat problems
+        :param max_clause: number of rows for the final state
+        :param max_var: number of columns for the final state
+        :param mode: 'random' => at reset, randomly pick a file from directory
+                     'iterate' => at reset, iterate each file one by one
+                     'repeat^n' => at reset, give the same problem n times before iterates to the next one
+                     'filename' => at reset, repeatedly use the given filename
         """
         print("SAT-v0: at dir {} max_clause {} max_var {} mode {}".format(sat_dir, max_clause, max_var, mode))
         self.sat_dir = sat_dir
-        self.sat_files = [join(self.sat_dir, f)
-                          for f in listdir(self.sat_dir)
-                          if isfile(join(self.sat_dir, f))]
+        self.sat_files = [join(self.sat_dir, f) for f in listdir(self.sat_dir) if isfile(join(self.sat_dir, f))]
         self.sat_file_num = len(self.sat_files)
 
         self.max_clause = max_clause
@@ -81,12 +85,16 @@ class gym_sat_Env(gym.Env):
         self.S.init(np.reshape(state, (self.max_clause * self.max_var * 2,)))
         return state
 
+    # self.curr_state, self.clause_counter, self.isSolved, self.actionSet = self.parse_state()
+    # return state, self.curr_state
+
     def reset_at(self, file_no):
         """
         This function reset the minisat by the file_no
         """
         assert (file_no >= 0) and (file_no < self.sat_file_num), "file_no has to be a valid file list index"
         pick_file = self.sat_files[file_no]
+        #		print("{} --> {}".format(file_no, pick_file))
         state = np.zeros((self.max_clause, self.max_var, 2), dtype=np.float32)
         self.S = GymSolver(pick_file)
         if self.S.init(np.reshape(state, (self.max_clause * self.max_var * 2,))):
@@ -97,8 +105,13 @@ class gym_sat_Env(gym.Env):
     def step(self, decision):
         """
         This function makes a step based on the parameter input
-        return true if the SAT problem is finished.
+        :returns: true if the SAT problem is finished.
         """
+        # no need for returning a state for step function
+        # self.S.step_forward(decision)
+        # return self.S.get_done()
+
+        # It is safe to always assume that the state also needs to be returned
         self.S.set_decision(decision)
         state = np.zeros((self.max_clause, self.max_var, 2), dtype=np.float32)
         self.S.step(np.reshape(state, (self.max_clause * self.max_var * 2,)))
@@ -108,7 +121,7 @@ class gym_sat_Env(gym.Env):
         """
         This function makes a simulation step, while providing the pi and v
         from neural net for the state from the last simulation
-        return state (next state to evaluate), bool (need evaluate state, not empty), bool (need more MCTS steps)
+        :returns: state (next state to evaluate), bool (need evaluate state, not empty), bool (need more MCTS steps)
         """
         state = np.zeros((self.max_clause, self.max_var, 2), dtype=np.float32)
         code = self.S.simulate(np.reshape(state, (self.max_clause * self.max_var * 2,)), pi,
