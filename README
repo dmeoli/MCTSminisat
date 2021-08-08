@@ -3,7 +3,7 @@ Quick Install
 
 - Decide where to install the files . The simplest approach is to use
   GNU standard locations and just set a "prefix" for the root install
-  directory (reffered to as $PREFIX below). More control can be
+  directory (referred to as $PREFIX below). More control can be
   achieved by overriding other of the GNU standard install locations
   (includedir, bindir, etc). Configuring with just a prefix:
 
@@ -27,12 +27,12 @@ Configuration
 
 - Recompilation can be done without the configuration step.
 
-  [ TODO: describe configartion possibilities for compile flags / modes ]
+  [ TODO: describe configuration possibilities for compile flags / modes ]
 
 ================================================================================
 Building
 
-  [ TODO: describe seperate build modes ]
+  [ TODO: describe separate build modes ]
 
 ================================================================================
 Install
